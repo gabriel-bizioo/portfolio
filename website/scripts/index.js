@@ -9,11 +9,10 @@
 //     }
 // });
 
-var nav = document.getElementById("gay");
-var div = document.getElementById("bi");
+var nav = document.getElementById("header-nav");
+var div = document.getElementById("nav-div");
 
 window.addEventListener('scroll', (event)=>{
-    console.log("scrolling...");
     if(window.scrollY >= 400){
         nav.classList.add("fixed-header");
         div.classList.add("visible-title");
