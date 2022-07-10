@@ -43,7 +43,7 @@ a{
 }
 
 .banner{
-    background-color: #191919;
+    background-image: url(../resources/theodore.jpg);
     background-position: center;
     background-size: cover;
     width: 100%;
@@ -51,8 +51,9 @@ a{
 }
 
 .banner h1{
-    margin: 1.5%;
+    margin-left: 39%;
     font-size: 50px;
+    padding: 0% 2.5%;
 }
 
 .fixed-header{
@@ -90,7 +91,7 @@ a{
 
 .page{
     background-color: #576066;
-    padding: 10%;
+    padding: 5%;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -98,19 +99,30 @@ a{
 
 .main-content{
     background-color: #576066;
-    padding: 10%;
+    padding: 5%;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.main-content span{
+    margin: 10%;
 }
 
 .content-block{
     flex-direction: row;
-    margin: auto;
-    padding: 3%;
+    padding: 5% 3%;
+    width: 100%;
+    visibility: hidden;
+}
+
+.visible-block{
+    visibility: visible;
 }
 
 .text-content{
-    padding: 5%;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     text-align: justify; 
@@ -121,7 +133,7 @@ a{
     flex-direction: row;
     justify-content: center;
     align-content: center;
-    margin: auto;
+    margin: 10% 0%;
 }
 
 .content-links a {
