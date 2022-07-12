@@ -43,7 +43,7 @@ a{
 }
 
 .banner{
-    background-image: url(../resources/theodore.jpg);
+    /*background-image: url(../resources/theodore.jpg);*/
     background-position: center;
     background-size: cover;
     width: 100%;
@@ -114,12 +114,8 @@ a{
     flex-direction: row;
     padding: 5% 3%;
     width: 100%;
-    visibility: hidden;
 }
 
-.visible-block{
-    visibility: visible;
-}
 
 .text-content{
     padding: 2rem;
@@ -138,4 +134,26 @@ a{
 
 .content-links a {
     margin-left: 5%;
+}
+
+[data-anime]{
+    opacity: 0;
+    transition:  .3s;
+}
+
+[data-anime="left"]{
+    transform: translate3d(-50px, 0, 0);
+}
+
+[data-anime="right"]{
+    transform: translate3d(50px, 0, 0);
+}
+
+[data-anime].animate{
+    opacity: 1;
+    transform: translate3d(0px, 0px, 0px);
+}
+
+[data-anime ="top"].some{
+    transform: translate3d(0px, -50px, 0px);
 }

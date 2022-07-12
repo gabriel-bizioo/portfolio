@@ -1,17 +1,33 @@
-// $(window).scroll(function(){
-//     if ($(window).scrollTop() >= 460) {
-//         $('nav').addClass('fixed-header');
-//         $('site-title').addClass('visible-title');
-//     }
-//     else {
-//         $('nav').removeClass('fixed-header');
-//         $('site-title').removeClass('visible-title');
-//     }
-// });
-
 var nav = document.getElementById("header-nav");
 var div = document.getElementById("nav-div");
-var contentBlocks = document.getElementsByClassName("content-block");
+const contentBlocks = document.querySelectorAll('[data-anime]');
+
+const debounce = function(func, wait, i, immediate){
+    let timeout;
+    return function(...args){
+        const context = this;
+        const later = function () {
+            timeout = null;
+            if(!immediate) func.apply(context, args);
+        };
+        const callNow = immediate && !timeout;
+        clearTimeout = setTimeout(later, wait);
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if(callNow) func.apply(context, args);
+    }
+}
+
+function animeScroll(){
+    const windowTop = window.scrollY + ((window.innerHeight * 3.5) / 4);
+    contentBlocks.forEach(function(element){
+        if((windowTop) > element.offsetTop){
+            element.classList.add('animate')
+        }else{
+            element.classList.remove('animate')    
+        }
+    })
+}
 
 window.addEventListener('scroll', (event)=>{
     if(window.scrollY >= 400){
@@ -23,16 +39,10 @@ window.addEventListener('scroll', (event)=>{
         div.classList.remove("visible-title");
     }
 
-    for(i = 0; i < 10; i++){
-        let coord = contentBlocks[i].getBoundingClientRect().top;
-        let block = contentBlocks[i].classList;
-        console.log(window.scrollY);
-        console.log(coord);
-        if(window.scrollY - 400 >= coord){
-            block.add("visible-block");
-        }
-        else{
-            block.remove("visible-block");
-        }
+    if(contentBlocks.length){
+        debounce(function(){
+            animeScroll();
+        }, 200);
     }
+
 })
